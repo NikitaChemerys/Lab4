@@ -1,0 +1,76 @@
+﻿<Window x:Class="Lab4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab4"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Background="#333333"
+        Foreground="#ffaa00"
+        Height="775" Width="800">
+    <Grid Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="265*"/>
+            <RowDefinition Height="449*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Drawing Tool"  Margin="10,51,664,76">
+            <StackPanel Height="90">
+                <RadioButton Foreground="#ffaa00" x:Name="rPen"  Height="32">Pen</RadioButton>
+                <RadioButton Foreground="#ffaa00" x:Name="rBrush" Height="32">Brush</RadioButton>
+                <RadioButton Foreground="#ffaa00" x:Name="rFigure" Height="32" Unchecked="rFigure_Unchecked" Checked="rFigure_Checked">My Figure</RadioButton>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox x:Name="DrawingGroup" Header="Drawing Shape"  Margin="10,189,664,388" Grid.RowSpan="2">
+            <StackPanel Height="90">
+                <RadioButton Foreground="#ffaa00" x:Name="rline" Height="32" Checked="ShapeRadioButton_Checked" Tag="line" GroupName="Shapes">Line</RadioButton>
+                <RadioButton Foreground="#ffaa00" Height="32" Checked="ShapeRadioButton_Checked" Tag="circle" GroupName="Shapes">Circle</RadioButton>
+                <RadioButton Foreground="#ffaa00" Height="32" Checked="ShapeRadioButton_Checked" Tag="square" GroupName="Shapes">Square</RadioButton>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Color" FontWeight="Bold" Margin="121,51,553,388" Grid.RowSpan="2">
+            <StackPanel>
+                <RadioButton Foreground="black" Tag="black" IsChecked="True" Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor" >Black</RadioButton>
+                <RadioButton Foreground="blue" Tag="blue"  Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor">Blue</RadioButton>
+                <RadioButton Foreground="green" Tag="green" Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor">Green</RadioButton>
+                <RadioButton Foreground="cyan" Tag="cyan" Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor">Cyan</RadioButton>
+                <RadioButton Foreground="red" Tag="red" Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor">Red</RadioButton>
+                <RadioButton Foreground="magenta" Tag="magenta" Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor">Magenta</RadioButton>
+                <RadioButton Foreground="yellow" Tag="yellow" Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor">Yellow</RadioButton>
+                <RadioButton Foreground="white" Tag="white" Height="32" Checked="ColorRadioButton_Checked" GroupName="Rcolor">White</RadioButton>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Margin="10,129,10,171" Grid.Row="1">
+            <Grid HorizontalAlignment="Center" Width="772">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="400" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Volume" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,15,0,0" FontSize="14" Height="25" Width="47"/>
+                <Slider x:Name="volumeSlider" TickPlacement="Both" Minimum="0" Maximum="1"  Value="0.5"  Margin="110,10,10,558" ValueChanged="Slider_ValueChanged"></Slider>
+                <ComboBox x:Name="comboBoxVoice" Height="41" VerticalAlignment="Top" Margin="20,77,0,0" FontSize="14">
+                    <ComboBoxItem Content="DmC V - Bury the Light"/>
+                    <ComboBoxItem Content="Engelbert Humperdinck - A Man Without Love"/>
+                    <ComboBoxItem Content="Franz Peter Schubert - Ave Maria"/>
+                    <ComboBoxItem Content="Haddaway - What Is Love"/>
+                    <ComboBoxItem Content="Kazuma Kiryu - Baka Mitai"/>
+                </ComboBox>
+                <TextBlock Text="Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="398,15,0,0" FontSize="14" Height="25" Width="47" Grid.ColumnSpan="2"/>
+                <Slider x:Name="speedSlider" TickPlacement="Both" Minimum="0.25" Maximum="1.75" IsSnapToTickEnabled="True" TickFrequency="2" Margin="73,10,23,558"  Value="1" ValueChanged="speedSlider_ValueChanged" Grid.Column="1">
+                    <Slider.Ticks>0.25, 0.5, 0.75 ,1, 1.25, 1.5, 1.75</Slider.Ticks>
+                </Slider>
+                <Button Background="#ffaa00" x:Name="startSong" Margin="0,77,23,480"  FontSize="14" Content="Start" Grid.Column="1" Click="startSong_Click"/>
+            </Grid>
+        </GroupBox>
+        <Button Foreground="#ffffff" Background="#ff5555" x:Name="exit" Height="60" Margin="330,342,330,47" FontSize="14" Content="Exit" Cursor="Hand" Click="exit_Click" Grid.Row="1"/>
+        <GroupBox Header="Show Shape" Margin="232,51,10,388" Grid.RowSpan="2">
+            <Grid x:Name="drawCanvas" Background="LightGray">
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
